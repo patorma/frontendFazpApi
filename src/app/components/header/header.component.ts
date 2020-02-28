@@ -7,6 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+  title: string = 'NG SimpleAuth';
+  tasks: string = 'Tasks';
+  private: string = 'Private';
+  signin: string =   'SignIn';
+  signup: string = 'SignUp';
   constructor() { }
 
   ngOnInit(): void {
