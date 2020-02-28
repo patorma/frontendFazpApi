@@ -7,13 +7,39 @@
             <div class="card-body">
                 <form (submit)="signUp()">
                     <div class="form-group">
-                        <input type="text" [(ngModel)]="user.name" name="name" class="form-control" placeholder="Name" required autofocus>
+                        <input type="text" [(ngModel)]="user.name" name="name" class="form-control" placeholder="Name" required minlength="4" #name="ngModel" autofocus>
+                        <div class="alert alert-danger" *ngIf="name.invalid && (name.dirty || name.touched)">
+                            <!--este div es el principal que pregunta si hay error-->
+                            <div *ngIf="name.errors.required">
+                                Nombre es requerido
+                            </div>
+                            <div *ngIf="name.errors.minlength">
+                                Nombre debe tener 4 caracteres
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group">
-                        <input type="email" [(ngModel)]="user.email" name="email" class="form-control" placeholder="Email" required>
+                        <input type="email" [(ngModel)]="user.email" name="email" class="form-control" placeholder="Email" required email #email="ngModel">
+                        <div class="alert alert-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
+                            <!--este div es el principal que pregunta si hay error-->
+                            <div *ngIf="email.errors.required">
+                                Email es requerido
+                            </div>
+                            <div *ngIf="email.errors.email">
+                                Email debe tener un formato válido
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group">
-                        <input type="password" [(ngModel)]="user.password" name="password" class="form-control" placeholder="Password" required>
+                        <input type="password" [(ngModel)]="user.password" name="password" class="form-control" placeholder="Password" required password minlength="8" #password="ngModel">
+                        <div class="alert alert-danger" *ngIf="password.invalid && (password.dirty || password.touched)">
+                            <div *ngIf="password.errors.required">
+                                Password es requerido
+                            </div>
+                            <div *ngIf="password.errors.minlength">
+                                El password debe tener minimo 8 caracteres
+                            </div>
+                        </div>
                     </div>
                     <button type="submit" class="btn btn-primary btn-block">
                         {{title}}
