@@ -11,6 +11,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { FormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { AuthService } from './services/auth.service';
+import { AuthGuard } from './auth.guard';
+
 
 
 @NgModule({
@@ -28,7 +30,7 @@ import { AuthService } from './services/auth.service';
     FormsModule,
     HttpClientModule
   ],
-  providers: [AuthService ],
+  providers: [AuthService, AuthGuard ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
