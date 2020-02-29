@@ -9,6 +9,10 @@ import { TasksComponent } from './components/tasks/tasks.component';
 import { PrivateTasksComponent } from './components/private-tasks/private-tasks.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FormsModule } from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
+import { AuthService } from './services/auth.service';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,9 +25,10 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [AuthService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
